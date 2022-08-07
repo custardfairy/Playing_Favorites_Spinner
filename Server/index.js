@@ -1,15 +1,19 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
+const path = require('path');
 
-const app = express();
+const app = express()
 
-app.use(cors());
+app.use(express.static(path.join(__dirname, "../Client")));
+
+// app.use(cors());
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
-}).on('error', (err) => {
-    console.log(err);
-}
-// api code for pulling from BGA
-// app.post()
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, "/../client/index.html"));
+}); 
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
+})

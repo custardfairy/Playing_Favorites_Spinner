@@ -31,7 +31,7 @@
   
   .left, .right {
     width: 25%;
-    background-color: #000;
+    background-color: rgba(59, 59, 59, 0.651);
     display: flex;
     padding: 10px;
     }
@@ -71,7 +71,7 @@
 
 .form {
     text-aline: center;
-    
+
 }
     
 }

@@ -22,10 +22,8 @@
       <div class="row">
         <div class="column side">
           <section class="flex-container">
-            <a href="https://api.boardgameatlas.com/oauth/authorize?response_type=code&client_id=your_client_id&redirect_uri=your_redirect_for_auth_code">
-          <button class="btn bga">Connect to Board Game Atlas</button>
-          </a>
-            <button class="btn rando">Just tell me what to play, ok?</button>
+            <button id="bgaBtn" class="mbtn bga">Connect to Board Game Atlas</button>
+            <button id="randoBtn" class="mbtn rando">Random Game from my library</button>
           </section>
          
             
@@ -68,19 +66,22 @@
                     </div> 
                     <button class="spin" onclick=rotateFunction()>SPIN</button>
                 </div>
-                <script src="main.js"></script>
-            </div>
-        
-    <div class="column side">
-        <section class="flex-container">
-            <div>Your Game List</div>
-            
-    </div>
-    </div>
-    
-      
-      <div class="footer">
-        <p>We're Meeple People.</p>
-      </div>
+              </div>
+              
+              <div class="column side">
+                <section class="flex-container">
+                  <div>
+                  <center><h1>Your Games</h1></center>
+                  <ul id="myList"></ul><br>
+                  </div>
+              </div>
+
+              
+              
+              <div class="footer">
+                <p>We're Meeple People.</p>
+              </div>
+              <script src="/../node_modules/axios/dist/axios.min.js"></script>
+              <script src="main.js"></script>
 </body>
 </html>

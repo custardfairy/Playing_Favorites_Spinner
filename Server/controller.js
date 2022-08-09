@@ -1,5 +1,8 @@
+// table stuff here
 module.exports = {
-  authBga: (req, res) => {
-    res.status(200);
-  },
-};
+  getGames: function (req, res) {
+
+    let randomIndex = Math.floor(Math.random() * games.length),
+    let randomGame = games[randomIndex],
+  }
+}

@@ -22,7 +22,12 @@
       <div class="row">
         <div class="column side">
           <section class="flex-container">
-            <button id="bgaBtn" class="mbtn bga">Connect to Board Game Atlas</button>
+            <!-- <button id="bgaBtn" class="mbtn bga">Connect to Board Game Atlas</button> -->
+            <p>Enter your Board Game Atlas Username in the field below to pull in a list of your games</p>	
+            <form>
+            <input id="username" type="text">
+            <input id="unameBtn" type="button" value="Fetch Games">
+            </form>
             <button id="randoBtn" class="mbtn rando">Random Game from my library</button>
           </section>
          
@@ -81,7 +86,7 @@
               <div class="footer">
                 <p>We're Meeple People.</p>
               </div>
-              <script src="/../node_modules/axios/dist/axios.min.js"></script>
+              <script src="/node_modules/axios/dist/axios.min.js"></script>
               <script src="main.js"></script>
 </body>
 </html>

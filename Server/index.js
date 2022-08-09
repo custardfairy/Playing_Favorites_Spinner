@@ -14,6 +14,10 @@ app.get("/", function (req, res) {
 });
 app.get("/api/bga", authBga);
 
+app.get("/node_modules/axios/dist/axios.min.js", function (req, res) {
+  res.sendFile(path.join(__dirname, "../node_modules/axios/dist/axios.min.js"));
+});
+
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {

@@ -43,28 +43,66 @@ function rotateFunction(){
     document.querySelector(".box2 .span4 b").innerHTML = text4;
   });
 
-  const bgaBtn = document.getElementById("bgaBtn");
-  bgaBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("clicked");
-    makeGetRequest("/api/bga");
+  // const bgaBtn = document.getElementById("bgaBtn");
+  // bgaBtn.addEventListener("click", function (event) {
+    // event.preventDefault();
+    // console.log("clicked");
+    // makeGetRequest("/api/bga");
+  // });
+
+  // function makeGetRequest(path) {
+  //   axios.get(path).then(
+  //     (response) => {
+  //       var result = response.data;
+  //       console.log(result);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+  // makeGetRequest(
+  //   "https://api.boardgameatlas.com/oauth/authorize?response_type=code&client_id=4ljazoQBAE&redirect_uri=http://localhost:3000/"
+  // );
+const unameButton = document.querySelector('#unameBtn');
+const unameText = document.querySelector('#username');
+
+unameButton.addEventListener('click', clickButton);
+
+function clickButton() {
+let URL = "https://api.boardgameatlas.com/api/lists?username=" + unameText.value + "&client_id=4ljazoQBAE"
+
+console.log(URL)
+// code to pass the URL to the server to GET the game lists
+axios
+  .get(URL)
+  .then(res => {
+    console.log(`statusCode: ${res.status}`);
+    console.log(res);
+  })
+  .catch(error => {
+    console.error(error);
   });
-
-  function makeGetRequest(path) {
-    axios.get(path).then(
-      (response) => {
-        var result = response.data;
-        console.log(result);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  makeGetRequest(
-    "https://api.boardgameatlas.com/oauth/authorize?response_type=code&client_id=4ljazoQBAE&redirect_uri=http://localhost:3000/"
-  );
+// need code to pull the specific list_id and pass to api/search, return the given list
+// https://api.boardgameatlas.com/api/search?list_id={"list_id"}&client_id=4ljazoQBAE
+// my list_id kIAQ6D3nV2
+// GET https://api.boardgameatlas.com/api/search?list_id=kIAQ6D3nV2&client_id=4ljazoQBAE
+// need code to pull only the names of games from the returned list into an array
+// need code to push the array into a viewable list on the page (html)
+// need code to make items in the list selectable 
+// need code to push the selected items into the spinner
+// need code attached to randomizer button to randomly select and alert a single game title from the full list.
+axios
+  .get(URL)
+  .then(res => {
+    console.log(`statusCode: ${res.status}`);
+    console.log(res);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+}
 
   // games to be pulled from table or API database
   let games = [];

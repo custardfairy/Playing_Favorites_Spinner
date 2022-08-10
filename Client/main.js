@@ -23,10 +23,16 @@ pushBtn.addEventListener("click", function (event) {
   document.querySelector(".box2 .span4 b").innerHTML = text4;
 });
 
+const postBtn = document.querySelector("#postBtn");
+const getBtn = document.querySelector("#getBtn");
+const winnersForm = document.querySelector("#winnersForm");
 const unameButton = document.querySelector("#unameBtn");
 const unameText = document.querySelector("#username");
 const createGameTable = unameButton.addEventListener("click", clickButton);
 const randomButton = document.getElementById("randoBtn");
+const bgaBtn = document.getElementById("bgaBtn");
+
+// app.get("/api/games", getRando);
 
 function clickButton() {
   let URL =
@@ -47,6 +53,8 @@ function clickButton() {
       console.error(error);
     });
 }
+
+// let games = [];
 // code to pull the specific list_id and pass to api/search, return the given list
 function pullListId(id) {
   let listURL =
@@ -59,54 +67,74 @@ function pullListId(id) {
     .then((res) => {
       console.log(`statusCode: ${res.status}`);
       console.log(res);
+      // games = res.data;
+      this.data = res.data.games;
+      this.data.forEach(function (item) {
+        console.log(item);
+        let li = document.createElement("li");
+        li.innerText = item.name;
+        list.appendChild(li);
+      });
     })
     .catch((error) => {
       console.error(error);
     });
 }
 
-// games to be pulled from table or API database
+const list = document.getElementById("myList");
 
-let games = [];
-
-//  axios.post(listURL, data).then();
-
-// list to be created from games array imported from API db or table
-let list = document.getElementById("myList");
-// how do I add interactivity/selction to this generated list in HTML?  (possible solution below)
-
-// function to create list from games array
-games.forEach((item) => {
-  let li = document.createElement("li");
-  li.innerText = item;
-  list.appendChild(li);
-});
 // function to check off a game when it is clicked "checked"
-let selectList = document.querySelector("ul");
-list.addEventListener(
+myList.addEventListener(
   "click",
-  function (ev) {
-    if (ev.target.tagName === "LI") {
-      ev.target.classList.toggle("checked");
+  function (event) {
+    if (event.target === "li") {
+      event.target.checklist.toggle("checked");
     }
   },
   false
 );
 
+// bgaBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   axios
+//     .get("http://localhost:3000/auth")
+//     .then((res) => {
+//       console.log(res);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
 // function for a random game alert
-const getRando = () => {
-  axios.get("http://localhost:3000/api/games").then((res) => {
-    const data = res.data;
-    alert(data);
-  });
-};
+// const getRando = () => {
+//   axios.get("http://localhost:3000/api/games").then((res) => {
+//     const data = res.data.games.name;
+//     alert(data);
+//   });
+// };
 
-randoBtn.addEventListener("click", getRando);
 // how do I send checked items to the spinner?
-// if list element is checked, assign it to a variable and send it to the spinner
-
-// need code to pull only the names of games from the returned list into an array
-// need code to push the array into a viewable list on the page (html)
 // need code to make items in the list selectable
 // need code to push the selected items into the spinner
 // need code attached to randomizer button to randomly select and alert a single game title from the full list.
+const postWinner = (body) => {
+  console.log(body);
+  axios.post(`/api/winners`, body).then();
+};
+
+const submitHandler = (event) => {
+  event.preventDefault();
+  let gameTitle = document.querySelector("#gameTitle");
+  let winnerName = document.querySelector("#winnerName");
+  let score = document.querySelector("#score");
+
+  let bodyObj = {
+    gameTitle: gameTitle.value,
+    winnerName: winnerName.value,
+    score: score.value,
+  };
+
+  postWinner(bodyObj);
+};
+winnersForm.addEventListener("submit", submitHandler);

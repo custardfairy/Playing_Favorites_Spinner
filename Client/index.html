@@ -26,10 +26,19 @@
             <p>Enter your Board Game Atlas Username in the field below to pull in a list of your games</p>	
             <form>
             <input id="username" type="text">
-            <input id="unameBtn" type="button" value="Fetch Games">
+            <input id="unameBtn" type="button" value="Fetch Games"><br>
+            <!-- <a href="http://localhost:3000/auth">
+          <button id="bgaBtn" type='button' class="mbtn bga">Connect to Board Game Atlas</button></a> -->
             </form>
-            <button id="randoBtn" class="mbtn rando">Random Game from my library</button>
-          </section>
+            <p>Keep track of your wins:</p><br>
+            <form id="winnersForm"> 
+            <input id="gameTitle" type="text" value="Game Title"><br>
+            <input id="winnerName" type="text" value="Winner Name"><br>
+            <input id="score" type="text" value="Score"><br>
+            <button id="postBtn" type='submit' class="mbtn bga">Submit</button>
+          </form>
+          <button id="getBtn" type='button' class="mbtn bga">See All Winners</button>
+            </section>
          
             
           </section>
@@ -86,7 +95,7 @@
               <div class="footer">
                 <p>We're Meeple People.</p>
               </div>
-              <script src="/node_modules/axios/dist/axios.min.js"></script>
-              <script src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

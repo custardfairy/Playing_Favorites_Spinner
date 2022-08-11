@@ -25,7 +25,7 @@ app.use(express.static("static"));
 app.use(express.static(path.join(__dirname, "../Client")));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/../client/index.html"));
+  res.sendFile(path.join(__dirname, "/../Client/index.html"));
 });
 
 const port = process.env.PORT || 3000;

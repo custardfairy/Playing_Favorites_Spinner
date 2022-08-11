@@ -34,8 +34,6 @@ const createGameTable = unameButton.addEventListener("click", clickButton);
 const randomButton = document.getElementById("randoBtn");
 const bgaBtn = document.getElementById("bgaBtn");
 
-// app.get("/api/games", getRando);
-
 function clickButton() {
   let URL =
     "https://api.boardgameatlas.com/api/lists?username=" +

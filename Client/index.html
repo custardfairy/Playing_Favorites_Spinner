@@ -23,7 +23,8 @@
         <div class="column side">
           <section class="flex-container">
             <!-- <button id="bgaBtn" class="mbtn bga">Connect to Board Game Atlas</button> -->
-            <p>Enter your Board Game Atlas Username in the field below to pull in a list of your games</p>	
+            <p>Enter your Board Game Atlas Username</p>
+            <p>to pull in a list of your games:</p>	
             <form>
             <input id="username" type="text">
             <input id="unameBtn" type="button" value="Fetch Games"><br>
@@ -32,23 +33,20 @@
             </form>
             <p>Keep track of your wins:</p><br>
             <form id="winnersForm"> 
-            <input id="gameTitle" type="text" value="Game Title"><br>
-            <input id="winnerName" type="text" value="Winner Name"><br>
-            <input id="score" type="text" value="Score"><br>
+            <input id="gameTitle" type="text" placeholder="Game Title"><br>
+            <input id="winnerName" type="text" placeholder="Winner Name"><br>
+            <input id="score" type="text" placeholder="Score"><br>
             <button id="postBtn" type='submit' class="mbtn bga">Submit</button>
           </form>
-          <button id="getBtn" type='button' class="mbtn bga">See All Winners</button>
-            </section>
-         
-            
-          </section>
+          <button id="getBtn" type='button' class="mbtn bga">See All Winners</button> <br>
+          <section id="winnerContainer"></section>
+           </section>
         </div>
-        
+              
         <div class="column middle">
           <h2>The Magical Game Spinner</h2>
           <p>Enter up to four games in the fields below. Click SUBMIT to send them to the spinner.</p>
-          <p>Alternatively, you can pull a random assortment from your list of owned games on Board Game Atlas by clicking "Connect to Board Game Atlas" on the left. </p>
-
+          
           <form action="" method="post" id="wheelForm">
             <label for="game1">First game:</label>
             <input type="text" id="game1" name="game1" placeholder="Game Title 1"><br>
@@ -59,7 +57,6 @@
             <label for="game4">Fourth Game:</label>
             <input type="text" id="game4" name="game4" placeholder="Game Title 4"><br>
             <input type="submit" id="pushBtn">
-
           </form>
           <br>
 
@@ -70,32 +67,33 @@
                 <span class="span2"><b>Game2</b></span>
                 <span class="span3"><b>Game3</b></span>
                 <span class="span4"><b>Game4</b></span>
-                    </div>
+              </div>
                     <div class="box2">
                         <span class="span1"><b>Game1</b></span>
                         <span class="span2"><b>Game2</b></span>
                         <span class="span3"><b>Game3</b></span>
                         <span class="span4"><b>Game4</b></span>
                       </div>
-                    </div> 
+            </div> 
                     <button class="spin" onclick=rotateFunction()>SPIN</button>
-                </div>
-              </div>
+          </div>
+        </div>
               
-              <div class="column side">
-                <section class="flex-container">
-                  <div>
-                  <center><h1>Your Games</h1></center>
-                  <ul id="myList"></ul><br>
-                  </div>
-              </div>
-
+        <div class="column side">
+        <section class="flex-container">
+        <div>
+        <center><h3>Your Games</h3></center>
+        <ul id="myList"></ul><br>
+        </div>
+        </section>
+        </div>
+</div>
               
               
-              <div class="footer">
-                <p>We're Meeple People.</p>
-              </div>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div class="footer">
+          <p>We're Meeple People.</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

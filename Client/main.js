@@ -1,3 +1,5 @@
+// const { default: axios } = require("axios");
+
 function rotateFunction() {
   var min = 1024;
   var max = 9999;
@@ -83,41 +85,6 @@ function pullListId(id) {
 
 const list = document.getElementById("myList");
 
-// function to check off a game when it is clicked "checked"
-myList.addEventListener(
-  "click",
-  function (event) {
-    if (event.target === "li") {
-      event.target.checklist.toggle("checked");
-    }
-  },
-  false
-);
-
-// bgaBtn.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   axios
-//     .get("http://localhost:3000/auth")
-//     .then((res) => {
-//       console.log(res);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// function for a random game alert
-// const getRando = () => {
-//   axios.get("http://localhost:3000/api/games").then((res) => {
-//     const data = res.data.games.name;
-//     alert(data);
-//   });
-// };
-
-// how do I send checked items to the spinner?
-// need code to make items in the list selectable
-// need code to push the selected items into the spinner
-// need code attached to randomizer button to randomly select and alert a single game title from the full list.
 const postWinner = (body) => {
   console.log(body);
   axios.post(`/api/winners`, body).then();
@@ -128,6 +95,7 @@ const submitHandler = (event) => {
   let gameTitle = document.querySelector("#gameTitle");
   let winnerName = document.querySelector("#winnerName");
   let score = document.querySelector("#score");
+  let winnerContainer = document.querySelector("#winnerContainer");
 
   let bodyObj = {
     gameTitle: gameTitle.value,
@@ -137,4 +105,22 @@ const submitHandler = (event) => {
 
   postWinner(bodyObj);
 };
+const getWinners = (event) => {
+  winnerContainer.innerHTML = "";
+  axios.get(`/api/winners`).then((res) => {
+    for (i = 0; i < res.data.length; i++) {
+      console.log(res.data[i]);
+      let winner = res.data[i];
+      let winnerCard = document.createElement("div");
+      winnerCard.classList.add("winnerCard");
+      winnerCard.innerHTML = `<p>Game:${winner.gametitle}<p>
+      <p>Winner:${winner.winnername}<p>
+      <p>Score:${winner.score}<p>`;
+      winnerContainer.appendChild(winnerCard);
+      // console.log({ data: res.data });
+    }
+  });
+};
 winnersForm.addEventListener("submit", submitHandler);
+
+getBtn.addEventListener("click", getWinners);

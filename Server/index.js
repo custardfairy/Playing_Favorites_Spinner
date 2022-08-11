@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const { createWinner, seed } = require("./controller");
+const { getWinners, createWinner, seed } = require("./controller");
 const app = express();
 // const querystring = require("querystring");
 require("dotenv").config();
 const axios = require("axios");
+app.use(express.json());
+app.use(cors());
 
 const {
   // to pull Winner table from database
@@ -15,7 +17,7 @@ const {
   updateWinner,
 } = require("./controller");
 
-// app.get(`/api/winners`, getWinner);
+app.get(`/api/winners`, getWinners);
 app.post(`/api/winners`, createWinner);
 app.post(`/api/seed`, seed);
 // app.put(`/api/winners/:id`, updateWinner);
@@ -23,8 +25,6 @@ app.post(`/api/seed`, seed);
 app.use(express.static("static"));
 app.use(express.static(path.join(__dirname, "../Client")));
 
-app.use(cors());
-app.use(express.json());
 
 // app.use(cookieParser(process.env.COOKIE_SECRET));
 

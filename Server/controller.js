@@ -21,7 +21,7 @@ module.exports = {
     console.log(req.body);
     const { gameTitle, winnerName, score } = req.body;
     sequelize.query(
-      `INSERT INTO winners (gameTitle, winnerName, score) VALUES ('{gameTitle}','${winnerName}', ${score})`
+      `INSERT INTO winners (gameTitle, winnerName, score) VALUES ('${gameTitle}','${winnerName}', ${score})`
     );
   },
   seed: (req, res) => {
@@ -41,4 +41,11 @@ module.exports = {
       })
       .catch((err) => console.log("error seeding DB", err));
   },
+  getWinners: (req,res) => {
+    sequelize.query(`
+        select * from winners
+        `)
+    .then(dbRes => res.status(200).send(dbRes[0]))
+    .catch(err => console.log(err))
+}
 };
